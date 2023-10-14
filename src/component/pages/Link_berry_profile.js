@@ -132,6 +132,11 @@ function Link_berry() {
                   </div>
                 </Tab>
               </Tabs>
+
+              <div className="m-t-4 d-f j-c-s-e ">
+              <button className="bg_blue c-w p-x-3 p-y-0_5 b-r-15 b-n f-s-1_25">Buy</button>
+              <button className="bg_blue c-w p-x-3 p-y-0_5 b-r-15 b-n f-s-1_25">Sell</button>
+              </div>
             </div>
           </div>
         </Grid>

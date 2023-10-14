@@ -30,9 +30,9 @@ function Link_berry() {
             className="mb-3 m-t-3"
           >
             <Tab eventKey="home" title="Connection">
-              <Link to="/linkberry/profile">
+              <Link to="/linkberry/key">
                 <div className="">
-                  <div className="d-f a-i-c">
+                  <div className="d-f a-i-c m-y-2">
                     <div className="m-r-2">
                       <img src={blue_circle} className="w-2_5" />
                       <img src={blue_circle} className="w-2_5 m-l-_2px" />
@@ -44,9 +44,9 @@ function Link_berry() {
                   </div>
                 </div>
               </Link>
-              <Link to="/linkberry/profile">
+              <Link to="/linkberry/key">
                 <div className="">
-                  <div className="d-f a-i-c">
+                  <div className="d-f a-i-c m-y-2">
                     <div className="m-r-2">
                       <img src={blue_circle} className="w-2_5" />
                       <img src={blue_circle} className="w-2_5 m-l-_2px" />
@@ -58,9 +58,9 @@ function Link_berry() {
                   </div>
                 </div>
               </Link>
-              <Link to="/linkberry/profile">
+              <Link to="/linkberry/key">
                 <div className="">
-                  <div className="d-f a-i-c">
+                  <div className="d-f a-i-c m-y-2">
                     <div className="m-r-2">
                       <img src={blue_circle} className="w-2_5" />
                       <img src={blue_circle} className="w-2_5 m-l-_2px" />
@@ -72,9 +72,9 @@ function Link_berry() {
                   </div>
                 </div>
               </Link>
-              <Link to="/linkberry/profile">
+              <Link to="/linkberry/key">
                 <div className="">
-                  <div className="d-f a-i-c">
+                  <div className="d-f a-i-c m-y-2">
                     <div className="m-r-2">
                       <img src={blue_circle} className="w-2_5" />
                       <img src={blue_circle} className="w-2_5 m-l-_2px" />
@@ -86,9 +86,9 @@ function Link_berry() {
                   </div>
                 </div>
               </Link>
-              <Link to="/linkberry/profile">
+              <Link to="/linkberry/key">
                 <div className="">
-                  <div className="d-f a-i-c">
+                  <div className="d-f a-i-c m-y-2">
                     <div className="m-r-2">
                       <img src={blue_circle} className="w-2_5" />
                       <img src={blue_circle} className="w-2_5 m-l-_2px" />
@@ -102,76 +102,76 @@ function Link_berry() {
               </Link>
             </Tab>
             <Tab eventKey="profile" title="Global">
-              <Link to="/linkberry/profile">
+              <Link to="/linkberry/key">
                 <div className="">
-                  <div className="d-f a-i-c">
-                    <div className="m-r-2">
-                      <img src={blue_circle} className="w-2_5" />
-                      <img src={blue_circle} className="w-2_5 m-l-_2px" />
+                  <div className="d-f a-i-c m-y-2">
+                    <div className="m-r-7 f-w-600">
+                    
+                    Arun Yadav
                     </div>
                     <div className="">
-                      <div className="f-w-600">Arun Yadav</div>
-                      <div className="f-s-0_8">0.002 MNT</div>
+                   
+                      <div className="">0.002 MNT</div>
                     </div>
                   </div>
                 </div>
               </Link>
-              <Link to="/linkberry/profile">
+              <Link to="/linkberry/key">
                 <div className="">
-                  <div className="d-f a-i-c">
-                    <div className="m-r-2">
-                      <img src={blue_circle} className="w-2_5" />
-                      <img src={blue_circle} className="w-2_5 m-l-_2px" />
+                  <div className="d-f a-i-c m-y-2">
+                    <div className="m-r-7 f-w-600">
+                    
+                    Arun Yadav
                     </div>
                     <div className="">
-                      <div className="f-w-600">Arun Yadav</div>
-                      <div className="f-s-0_8">0.002 MNT</div>
+                   
+                      <div className="">0.002 MNT</div>
                     </div>
                   </div>
                 </div>
               </Link>
-              <Link to="/linkberry/profile">
-                <div className="">
-                  <div className="d-f a-i-c">
-                    <div className="m-r-2">
-                      <img src={blue_circle} className="w-2_5" />
-                      <img src={blue_circle} className="w-2_5 m-l-_2px" />
-                    </div>
-                    <div className="">
-                      <div className="f-w-600">Arun Yadav</div>
-                      <div className="f-s-0_8">0.002 MNT</div>
-                    </div>
+              <Link to="/linkberry/key">
+              <div className="">
+                <div className="d-f a-i-c m-y-2">
+                  <div className="m-r-7 f-w-600">
+                  
+                  Arun Yadav
+                  </div>
+                  <div className="">
+                 
+                    <div className="">0.002 MNT</div>
                   </div>
                 </div>
-              </Link>
-              <Link to="/linkberry/profile">
-                <div className="">
-                  <div className="d-f a-i-c">
-                    <div className="m-r-2">
-                      <img src={blue_circle} className="w-2_5" />
-                      <img src={blue_circle} className="w-2_5 m-l-_2px" />
-                    </div>
-                    <div className="">
-                      <div className="f-w-600">Arun Yadav</div>
-                      <div className="f-s-0_8">0.002 MNT</div>
-                    </div>
-                  </div>
+              </div>
+            </Link>
+            <Link to="/linkberry/key">
+            <div className="">
+              <div className="d-f a-i-c m-y-2">
+                <div className="m-r-7 f-w-600">
+                
+                Arun Yadav
                 </div>
-              </Link>
-              <Link to="/linkberry/profile">
                 <div className="">
-                  <div className="d-f a-i-c">
-                    <div className="m-r-2">
-                      <img src={blue_circle} className="w-2_5" />
-                      <img src={blue_circle} className="w-2_5 m-l-_2px" />
-                    </div>
-                    <div className="">
-                      <div className="f-w-600">Arun Yadav</div>
-                      <div className="f-s-0_8">0.002 MNT</div>
-                    </div>
-                  </div>
+               
+                  <div className="">0.002 MNT</div>
                 </div>
-              </Link>
+              </div>
+            </div>
+          </Link>
+          <Link to="/linkberry/key">
+          <div className="">
+            <div className="d-f a-i-c m-y-2">
+              <div className="m-r-7 f-w-600">
+              
+              Arun Yadav
+              </div>
+              <div className="">
+             
+                <div className="">0.002 MNT</div>
+              </div>
+            </div>
+          </div>
+        </Link>
             </Tab>
           </Tabs>
         </Grid>

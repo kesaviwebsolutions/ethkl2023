@@ -128,6 +128,7 @@ function App() {
               <Connect_wallet url={url} Metamask={Metamask} WalletC={WalletC} />
             }
           />
+          <Route path="/linkberry/key" element={<Key url={url} />} />
           <Route path="/createwallet" element={<Create_wallet url={url} />} />
           <Route path="/slice" element={<Slice url={url} />} />
           <Route path="/berry" element={<Berry url={url} />} />
