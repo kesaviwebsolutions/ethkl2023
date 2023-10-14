@@ -16,8 +16,7 @@ function Home({url}) {
         code:code
       }).then((res)=>{
         console.log(res)
-        window.localStorage.setItem("username",userName)
-        window.location.replace("/linkedin")
+        window.location.replace("/createwallet")
       }).catch((err)=>{
         console.log(err)
       })

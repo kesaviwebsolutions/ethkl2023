@@ -68,7 +68,7 @@ function App() {
    
           <Route path="/" element={<Home login={login}/>} />
           <Route path="/connect_wallet" element={<Connect_wallet url={url}/>} />
-          <Route path="/create_wallet" element={<Create_wallet url={url}/>} />
+          <Route path="/createwallet" element={<Create_wallet url={url}/>} />
           <Route path="/slice" element={<Slice url={url}/>} />
           <Route path="/berry" element={<Berry url={url}/>} />
          
