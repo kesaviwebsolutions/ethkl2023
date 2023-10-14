@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 function Home() {
   const navigate = useNavigate();
   const { linkedInLogin } = useLinkedIn({
-    clientId: "86vhj2q7ukf83q",
+    clientId: "8600jbmcddcu1z",
     redirectUri: `${window.location.origin}/linkedin`, // for Next.js, you can use `${typeof window === 'object' && window.location.origin}/linkedin`
     onSuccess: (code) => {
       console.log(code);
