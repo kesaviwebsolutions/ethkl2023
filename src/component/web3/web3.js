@@ -68,9 +68,9 @@ export const MetaMasklogin = async () => {
 export const generateVRS = async(days, connections, followers)=>{
   try {
     const message = `Days: ${days}, Connections: ${connections}, Followers: ${followers}`;
-    const account = web3.eth.accounts.privateKeyToAccount("0x7b1d5017204cd1fc3bfa0f83abd075f8ef6318a9888dbf2eef9f3fcb7be1618e");
+    const account = web3.eth.accounts.privateKeyToAccount("0xc8b6af2d1de4ca6a273223b1bafdb5fea5167889d37caef31b53a6b2c59079a3");
     const signedMessage = await web3.eth.accounts.sign(message, account.privateKey);
-    console.log(signedMessage)
+    return signedMessage.signature
   } catch (error) {
     console.log(error)
   }
@@ -86,12 +86,22 @@ export const getUserAddress = async () => {
 }
 
 
-export const get_Metapower_Contract= async () => {
+export const get_LinkBerry_Contract= async () => {
   try {
   const Contract = new web3.eth.Contract(LinkBerrySlicesABI, LinkBerrySlicesAddress)
   return Contract
   } catch (error) {
-    // console.log(error)
+    console.log(error)
+  }
+}
+
+export const getPrice = async(address, days, followers, collections)=>{
+  try {
+    const contract = await get_LinkBerry_Contract()
+    const data = await contract.methods.getBuyPricePerSlice(address, days, followers, collections).call()
+    return data
+  } catch (error) {
+    console.log(error)
   }
 }
 

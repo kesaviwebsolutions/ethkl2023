@@ -6,17 +6,20 @@ import Tabs from "react-bootstrap/Tabs";
 import meta from "../Image/meta.png";
 import { Grid } from "@mui/material";
 
-function Link_berry() {
+function Link_berry({url}) {
   const [value, setValue] = React.useState("one");
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+
+
   return (
     <div className="p-t-2">
       <Grid container>
         <Grid item xs={12} sm={12} md={3} lg={2}>
-          <Sidebar />
+          <Sidebar url={url}/>
         </Grid>
         <Grid item xs={12} sm={12} md={9} lg={10}>
           <div className="">

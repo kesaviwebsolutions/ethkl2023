@@ -35,7 +35,12 @@ function App() {
   const user = useStoreState((state) => state.user);
 
   useEffect(() => {
-    const init = async () => {};
+    const init = async () => {
+      const user = window.localStorage.getItem("username")
+      if(user){
+        Metamasklogin();
+      }
+    };
     init();
   }, []);
 
@@ -78,6 +83,13 @@ function App() {
     await WalletConnect();
     const add = await getUserAddress();
     connectwalletBackend(add);
+    setUser(add);
+  };
+
+  const Metamasklogin = async () => {
+    await MetaMasklogin();
+    const add = await getUserAddress();
+    window.localStorage.setItem("wallet", "wallet");
     setUser(add);
   };
 
@@ -129,13 +141,13 @@ function App() {
               <Connect_wallet url={url} Metamask={Metamask} WalletC={WalletC} />
             }
           />
-          <Route path="/linkberry/key" element={<Key url={url} />} />
+          <Route path="/linkberry/:user" element={<Key url={url} />} />
           <Route path="/createwallet" element={<Create_wallet url={url} />} />
           <Route path="/slice" element={<Slice url={url} />} />
           <Route path="/berry" element={<Berry url={url} />} />
           <Route path="/linkberry" element={<Link_berry url={url} />} />
           <Route
-            path="/linkberry/profile"
+            path="/linkberry/profile/:user"
             element={<Link_berry_profile url={url} />}
           />
 

@@ -4,11 +4,17 @@ import React, { useEffect, useState } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import linkedin from "../Image/linkedin.png";
 import right_arrow from "../Image/right_arrow.png";
-import { generateVRS } from "../web3/web3";
+import { generateVRS, getPrice, get_LinkBerry_Contract } from "../web3/web3";
 import axios from "axios";
 
 
 function Home({url}) {
+
+  const [sign, setSign] = useState()
+  const [follower, setFollower] = useState()
+  const [collections, setCollections] = useState()
+  const [days, setDays] = useState()
+  const [user, setUser] = useState();
 
 
   useEffect(()=>{
@@ -17,13 +23,30 @@ function Home({url}) {
         axios.post(`${url}/user/getuser`,{
           username:user
         }).then(async(res)=>{
-          console.log(res.data)
+          // console.log(res.data)
           const day = Math.floor((new Date().getTime()/1000 - res.data.joinAt/1000)/86400)
-          generateVRS(day, res.data.connections, res.data.followers)
+          setUser(res.data.wallet_Address)
+          setFollower(res.data.followers)
+          setCollections(res.data.connections)
+          setDays(day)
         })
       }
     init();
   },[])
+
+  const Buy = async()=>{
+    try {
+      const userlogedin = window.localStorage.getItem("username");
+      const price = await getPrice(user, days,follower, collections);
+      const contract = await get_LinkBerry_Contract();
+      const data = await contract.methods.buySlices(user, days, collections, follower).send({from:user,value:price});
+      if(data.status){
+        window.location.replace(`/linkberry/profile/${userlogedin}`)
+      }
+    } catch (error) {
+      // console.log(error)
+    }
+  }
 
 
 
@@ -46,7 +69,7 @@ function Home({url}) {
           </div>
        
           <div className=" m-t-3 w-100">
-            <button className="b-r-40 bg_blue b-n c-w  p-x-2 p-y-0_5 w-100 ">
+            <button className="b-r-40 bg_blue b-n c-w  p-x-2 p-y-0_5 w-100 " onClick={()=>Buy()}>
               Buy Slice for $0
             </button>
           </div>

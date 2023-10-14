@@ -12,6 +12,7 @@ import axios from "axios";
 import { userBalanceOfChain } from "../web3/web3";
 
 function Home({url}) {
+
   const user = useStoreState((state) => state.user);
   const [username, setUserName] = useState();
   const [wallet, setWallet] = useState();

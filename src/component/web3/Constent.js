@@ -78,9 +78,6 @@ export const LinkBerrySlicesABI = [
       { type: "uint256", name: "_days", internalType: "uint256" },
       { type: "uint256", name: "_connections", internalType: "uint256" },
       { type: "uint256", name: "_followers", internalType: "uint256" },
-      { type: "uint8", name: "v", internalType: "uint8" },
-      { type: "bytes32", name: "r", internalType: "bytes32" },
-      { type: "bytes32", name: "s", internalType: "bytes32" },
     ],
   },
   {
@@ -104,9 +101,6 @@ export const LinkBerrySlicesABI = [
       { type: "uint256", name: "_days", internalType: "uint256" },
       { type: "uint256", name: "_connections", internalType: "uint256" },
       { type: "uint256", name: "_followers", internalType: "uint256" },
-      { type: "uint8", name: "v", internalType: "uint8" },
-      { type: "bytes32", name: "r", internalType: "bytes32" },
-      { type: "bytes32", name: "s", internalType: "bytes32" },
     ],
   },
   {
@@ -119,9 +113,6 @@ export const LinkBerrySlicesABI = [
       { type: "uint256", name: "_days", internalType: "uint256" },
       { type: "uint256", name: "_connections", internalType: "uint256" },
       { type: "uint256", name: "_followers", internalType: "uint256" },
-      { type: "uint8", name: "v", internalType: "uint8" },
-      { type: "bytes32", name: "r", internalType: "bytes32" },
-      { type: "bytes32", name: "s", internalType: "bytes32" },
     ],
   },
   {
@@ -144,9 +135,6 @@ export const LinkBerrySlicesABI = [
       { type: "uint256", name: "_days", internalType: "uint256" },
       { type: "uint256", name: "_connections", internalType: "uint256" },
       { type: "uint256", name: "_followers", internalType: "uint256" },
-      { type: "uint8", name: "v", internalType: "uint8" },
-      { type: "bytes32", name: "r", internalType: "bytes32" },
-      { type: "bytes32", name: "s", internalType: "bytes32" },
     ],
   },
   {
@@ -159,9 +147,6 @@ export const LinkBerrySlicesABI = [
       { type: "uint256", name: "_days", internalType: "uint256" },
       { type: "uint256", name: "_connections", internalType: "uint256" },
       { type: "uint256", name: "_followers", internalType: "uint256" },
-      { type: "uint8", name: "v", internalType: "uint8" },
-      { type: "bytes32", name: "r", internalType: "bytes32" },
-      { type: "bytes32", name: "s", internalType: "bytes32" },
     ],
   },
   {
@@ -184,6 +169,16 @@ export const LinkBerrySlicesABI = [
     outputs: [{ type: "uint256", name: "", internalType: "uint256" }],
     name: "protocolFeePercent",
     inputs: [],
+  },
+  {
+    type: "function",
+    stateMutability: "pure",
+    outputs: [{ type: "address", name: "", internalType: "address" }],
+    name: "recoverSigner",
+    inputs: [
+      { type: "bytes32", name: "_message", internalType: "bytes32" },
+      { type: "bytes", name: "_signature", internalType: "bytes" },
+    ],
   },
   {
     type: "function",
@@ -216,9 +211,6 @@ export const LinkBerrySlicesABI = [
       { type: "uint256", name: "_days", internalType: "uint256" },
       { type: "uint256", name: "_connections", internalType: "uint256" },
       { type: "uint256", name: "_followers", internalType: "uint256" },
-      { type: "uint8", name: "v", internalType: "uint8" },
-      { type: "bytes32", name: "r", internalType: "bytes32" },
-      { type: "bytes32", name: "s", internalType: "bytes32" },
     ],
   },
   {
@@ -258,6 +250,17 @@ export const LinkBerrySlicesABI = [
   },
   {
     type: "function",
+    stateMutability: "pure",
+    outputs: [
+      { type: "uint8", name: "", internalType: "uint8" },
+      { type: "bytes32", name: "", internalType: "bytes32" },
+      { type: "bytes32", name: "", internalType: "bytes32" },
+    ],
+    name: "splitSignature",
+    inputs: [{ type: "bytes", name: "_signature", internalType: "bytes" }],
+  },
+  {
+    type: "function",
     stateMutability: "view",
     outputs: [{ type: "uint256", name: "", internalType: "uint256" }],
     name: "statsPerFollower",
@@ -285,7 +288,8 @@ export const LinkBerrySlicesABI = [
     inputs: [],
   },
 ];
-export const LinkBerrySlicesAddress = "0xD070387633E70F5F636Cd0313aA73862AA096C71";
+export const LinkBerrySlicesAddress =
+  "0xc5404FD309E06EB7AdCc335B5Eb8CD4fB89Ae1E3";
 
 export const ERC20ABI = [
   {
