@@ -68,11 +68,13 @@ function Sidebar({url}) {
         <img src={watchlist} className="w-2 m-r-1" />
         Watchlist
       </div>
+      <NavLink to="/linkberry">
       <div className=" pa-1 a-i-c d-f c-p">
         {" "}
         <img src={share} className="w-2 m-r-1" />
         Share
       </div>
+      </NavLink>
     </div>
   );
 }

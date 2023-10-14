@@ -19,6 +19,7 @@ import Link_berry_profile from "./component/pages/Link_berry_profile";
 import Callback from "./component/pages/Callback";
 import Linkedin from "./component/pages/Linkedin";
 import Key from "./component/pages/Key";
+import Airdrop from "./component/pages/AirDrop";
 
 import {
   DissconnectWallet,
@@ -36,8 +37,8 @@ function App() {
 
   useEffect(() => {
     const init = async () => {
-      const user = window.localStorage.getItem("username")
-      if(user){
+      const user = window.localStorage.getItem("username");
+      if (user) {
         Metamasklogin();
       }
     };
@@ -150,7 +151,7 @@ function App() {
             path="/linkberry/profile/:user"
             element={<Link_berry_profile url={url} />}
           />
-
+          <Route path="/airdrop" element={<Airdrop url={url} />} />
           <Route path="/callback" element={<Callback />} />
           <Route path="/invite" element={<Invite url={url} />} />
           <Route path="/linkedin" element={<Linkedin url={url} />} />
