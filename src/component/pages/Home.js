@@ -10,7 +10,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 import linkedin from "../Image/linkedin.png";
 import { useNavigate } from "react-router-dom";
 
-function Home() {
+function Home({login}) {
   const navigate = useNavigate();
   const { linkedInLogin } = useLinkedIn({
     clientId: "86vhj2q7ukf83q",
@@ -41,7 +41,7 @@ function Home() {
         <div className="t-a-c ">
           <button
             className="b-r-40 bg_blue b-n c-w  p-x-2 p-y-0_5 "
-            onClick={linkedInLogin}
+            onClick={()=>login()}
           >
             <img src={linkedin} className="w-2" />
             &nbsp; Signup with Linkedin
