@@ -22,7 +22,7 @@ function Home() {
 
           <div className="t-a-c m-b-3">or</div>
           <div className="  w-100">
-            <a href="/connect_wallet">
+            <a href="/connectwallet">
               <button className="b-r-40 bg_blue b-n c-w  p-x-2 p-y-0_5 w-100 ">
                 Use Existing Wallet
               </button>

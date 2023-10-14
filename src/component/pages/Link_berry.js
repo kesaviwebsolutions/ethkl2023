@@ -5,10 +5,10 @@ function Link_berry() {
     <div>
     <div className='row'>
     <div className='col-12 col-sm-12 col-md-3 col-lg-2'>
-    
+    fsdf
     </div>
     <div className='col-12 col-sm-12 col-md-9 col-lg-10'>
-    
+    fds
     </div>
     </div>
     </div>
