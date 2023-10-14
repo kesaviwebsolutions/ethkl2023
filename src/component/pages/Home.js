@@ -24,6 +24,7 @@ function Home() {
   const [linkedins, setlinkedins] = useState(false);
   const [open, setOpen] = React.useState(false);
   const [url, seturl] = useState("");
+  const [extractedId, setExtractedId] = useState("");
 
   const navigate = useNavigate();
   const { linkedInLogin } = useLinkedIn({
@@ -37,15 +38,18 @@ function Home() {
     },
   });
 
-  function extractLinkedInUsername(linkedinURL) {
-    const prefix = "https://linkedin.com/in/";
-    if (linkedinURL.startsWith(prefix)) {
-      return linkedinURL.slice(prefix.length);
+  const handleExtractClick = (url) => {
+    const prefix = "https://www.linkedin.com/in/";
+    if (url.startsWith(prefix)) {
+      const id = url.slice(prefix.length).replace(/\/$/, ""); // This also removes the trailing slash
+      return id;
+    } else {
+      return "Invalid LinkedIn URL";
     }
-    return linkedinURL; // If the URL doesn't start with the prefix, return the original URL.
-  }
+  };
 
-  const username = extractLinkedInUsername(url);
+  const username = handleExtractClick(url);
+  console.log("user", username);
 
   const handleSubmit = async () => {
     try {
