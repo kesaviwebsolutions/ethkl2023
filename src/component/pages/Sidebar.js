@@ -52,26 +52,26 @@ function Sidebar({url}) {
         </div>
       </Link>
       <NavLink to="/linkberry">
-        <div className=" pa-1">
+        <div className=" pa-1 a-i-c d-f c-p">
           {" "}
-          <img src={home} className="w-2" />
-          &nbsp;Home
+          <img src={home} className="w-2 m-r-1" />
+          Home
         </div>
       </NavLink>
-      <div className=" pa-1">
+      <div className=" pa-1 a-i-c d-f c-p">
         {" "}
-        <img src={chat} className="w-2" />
-        &nbsp;Chats
+        <img src={chat} className="w-2 m-r-1" />
+        Chats
       </div>
-      <div className=" pa-1">
+      <div className=" pa-1 a-i-c d-f c-p">
         {" "}
-        <img src={watchlist} className="w-2" />
-        &nbsp;Watchlist
+        <img src={watchlist} className="w-2 m-r-1" />
+        Watchlist
       </div>
-      <div className=" pa-1">
+      <div className=" pa-1 a-i-c d-f c-p">
         {" "}
-        <img src={share} className="w-2" />
-        &nbsp;Share
+        <img src={share} className="w-2 m-r-1" />
+        Share
       </div>
     </div>
   );

@@ -49,7 +49,7 @@ function Link_berry({url}) {
             {" "}
             <span className="blue_clr">Link</span>.berry
           </div>
-          <hr />
+     
           <Tabs
             defaultActiveKey="home"
             id="uncontrolled-tab-example"
