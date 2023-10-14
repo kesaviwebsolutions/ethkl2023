@@ -75,6 +75,12 @@ export const LinkBerrySlicesABI = [
     name: "buySlices",
     inputs: [
       { type: "address", name: "linkberryUser", internalType: "address" },
+      { type: "uint256", name: "_days", internalType: "uint256" },
+      { type: "uint256", name: "_connections", internalType: "uint256" },
+      { type: "uint256", name: "_followers", internalType: "uint256" },
+      { type: "uint8", name: "v", internalType: "uint8" },
+      { type: "bytes32", name: "r", internalType: "bytes32" },
+      { type: "bytes32", name: "s", internalType: "bytes32" },
     ],
   },
   {
@@ -98,6 +104,9 @@ export const LinkBerrySlicesABI = [
       { type: "uint256", name: "_days", internalType: "uint256" },
       { type: "uint256", name: "_connections", internalType: "uint256" },
       { type: "uint256", name: "_followers", internalType: "uint256" },
+      { type: "uint8", name: "v", internalType: "uint8" },
+      { type: "bytes32", name: "r", internalType: "bytes32" },
+      { type: "bytes32", name: "s", internalType: "bytes32" },
     ],
   },
   {
@@ -110,6 +119,9 @@ export const LinkBerrySlicesABI = [
       { type: "uint256", name: "_days", internalType: "uint256" },
       { type: "uint256", name: "_connections", internalType: "uint256" },
       { type: "uint256", name: "_followers", internalType: "uint256" },
+      { type: "uint8", name: "v", internalType: "uint8" },
+      { type: "bytes32", name: "r", internalType: "bytes32" },
+      { type: "bytes32", name: "s", internalType: "bytes32" },
     ],
   },
   {
@@ -132,6 +144,9 @@ export const LinkBerrySlicesABI = [
       { type: "uint256", name: "_days", internalType: "uint256" },
       { type: "uint256", name: "_connections", internalType: "uint256" },
       { type: "uint256", name: "_followers", internalType: "uint256" },
+      { type: "uint8", name: "v", internalType: "uint8" },
+      { type: "bytes32", name: "r", internalType: "bytes32" },
+      { type: "bytes32", name: "s", internalType: "bytes32" },
     ],
   },
   {
@@ -144,6 +159,9 @@ export const LinkBerrySlicesABI = [
       { type: "uint256", name: "_days", internalType: "uint256" },
       { type: "uint256", name: "_connections", internalType: "uint256" },
       { type: "uint256", name: "_followers", internalType: "uint256" },
+      { type: "uint8", name: "v", internalType: "uint8" },
+      { type: "bytes32", name: "r", internalType: "bytes32" },
+      { type: "bytes32", name: "s", internalType: "bytes32" },
     ],
   },
   {
@@ -195,6 +213,12 @@ export const LinkBerrySlicesABI = [
     name: "sellSlices",
     inputs: [
       { type: "address", name: "linkberryUser", internalType: "address" },
+      { type: "uint256", name: "_days", internalType: "uint256" },
+      { type: "uint256", name: "_connections", internalType: "uint256" },
+      { type: "uint256", name: "_followers", internalType: "uint256" },
+      { type: "uint8", name: "v", internalType: "uint8" },
+      { type: "bytes32", name: "r", internalType: "bytes32" },
+      { type: "bytes32", name: "s", internalType: "bytes32" },
     ],
   },
   {
@@ -204,6 +228,15 @@ export const LinkBerrySlicesABI = [
     name: "setFeeDestination",
     inputs: [
       { type: "address", name: "_feeDestination", internalType: "address" },
+    ],
+  },
+  {
+    type: "function",
+    stateMutability: "nonpayable",
+    outputs: [],
+    name: "setTrustedSigner",
+    inputs: [
+      { type: "address", name: "_trustedSigner", internalType: "address" },
     ],
   },
   {
@@ -244,9 +277,15 @@ export const LinkBerrySlicesABI = [
     name: "transferOwnership",
     inputs: [{ type: "address", name: "newOwner", internalType: "address" }],
   },
+  {
+    type: "function",
+    stateMutability: "view",
+    outputs: [{ type: "address", name: "", internalType: "address" }],
+    name: "trustedSigner",
+    inputs: [],
+  },
 ];
-export const LinkBerrySlicesAddress =
-  "0x53eb0AC3eef4037063e015Da3Fac1FDCb0E36060";
+export const LinkBerrySlicesAddress = "0xD070387633E70F5F636Cd0313aA73862AA096C71";
 
 export const ERC20ABI = [
   {

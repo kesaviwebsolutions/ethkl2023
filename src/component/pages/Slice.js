@@ -1,11 +1,32 @@
 import slice from "../Image/slice.png";
 import { Grid } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import linkedin from "../Image/linkedin.png";
 import right_arrow from "../Image/right_arrow.png";
+import { generateVRS } from "../web3/web3";
+import axios from "axios";
 
-function Home() {
+
+function Home({url}) {
+
+
+  useEffect(()=>{
+    const init = async()=>{
+        const user = window.localStorage.getItem("username");
+        axios.post(`${url}/user/getuser`,{
+          username:user
+        }).then(async(res)=>{
+          console.log(res.data)
+          const day = Math.floor((new Date().getTime()/1000 - res.data.joinAt/1000)/86400)
+          generateVRS(day, res.data.connections, res.data.followers)
+        })
+      }
+    init();
+  },[])
+
+
+
   return (
     <>
       <div className="max-w-35rem m-a">

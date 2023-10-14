@@ -5,7 +5,7 @@ import axios from "axios"
 
 
 // let web3 = new Web3("https://sepolia.infura.io/v3/6e1530cd10fb4631a54c14a5f07b25a6") ;
-let web3 = new Web3("https://rpc.testnet.mantle.xyz")
+let web3 = new Web3(new Web3.providers.HttpProvider("https://rpc.testnet.mantle.xyz"));
 var provider;
 var walletprovider;
 
@@ -63,6 +63,17 @@ export const MetaMasklogin = async () => {
   web3 = new Web3(window.web3.currentProvider)
   walletprovider = await window.web3.currentProvider
   return data[0]
+}
+
+export const generateVRS = async(days, connections, followers)=>{
+  try {
+    const message = `Days: ${days}, Connections: ${connections}, Followers: ${followers}`;
+    const account = web3.eth.accounts.privateKeyToAccount("0x7b1d5017204cd1fc3bfa0f83abd075f8ef6318a9888dbf2eef9f3fcb7be1618e");
+    const signedMessage = await web3.eth.accounts.sign(message, account.privateKey);
+    console.log(signedMessage)
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 export const getUserAddress = async () => {

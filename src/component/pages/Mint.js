@@ -72,15 +72,20 @@ function Home({url}) {
               <div className="">{username}</div>
               <div className="">
                 {wallet} &nbsp;{" "}
-                <AiOutlineCopy />
+                <AiOutlineCopy onClick={()=>navigator.clipboard.writeText(wallet)
+                  .then(() => {
+                    alert('copied');
+                  })} />
               </div>
             </div>
           </div>
 
           {balance > 0 ?<div className=" m-t-3 w-100">
+            <a href="/slice">
             <button className="b-r-40 bg_blue b-n c-w  p-x-2 p-y-0_5 w-100 ">
               Proceed
             </button>
+            </a>
           </div> : <button className="b-r-40 bg_blue b-n c-w  p-x-2 p-y-0_5 w-100 ">
               insufficient balance
             </button>}
