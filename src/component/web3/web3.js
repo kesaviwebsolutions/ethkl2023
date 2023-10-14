@@ -39,6 +39,19 @@ export const WalletConnect = async () => {
   }
 }
 
+export const createExternalWallet = async()=>{
+    try {
+        const newAccount = web3.eth.accounts.create();
+        return {
+            address: newAccount.address,
+            key:newAccount.privateKey
+        }
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
 export const DissconnectWallet = async () => {
   provider = await walletConnectProv()
   await provider.disconnect()

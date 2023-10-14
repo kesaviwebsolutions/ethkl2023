@@ -19,12 +19,21 @@ import Link_berry_profile from "./component/pages/Link_berry_profile";
 import Callback from "./component/pages/Callback";
 import Linkedin from "./component/pages/Linkedin";
 
+import { DissconnectWallet, MetaMasklogin, WalletConnect, getUserAddress } from "./component/web3/web3";
+import { useStoreActions, useStoreState } from "easy-peasy";
 const url = "http://localhost:8001";
 const userName = "nikkrana";
 
 function App() {
+
+  const setUser = useStoreActions((action) => action.setUser);
+  const user = useStoreState((state) => state.user);
+
+
   useEffect(() => {
-    const init = () => {};
+    const init = async() => {
+
+    };
     init();
   }, []);
 
@@ -33,7 +42,6 @@ function App() {
     for (let i = 0; i < 6; i++) {
       codes.push(generateUniqueAlphaNumeric(20));
     }
-
     axios
       .post(`${url}/join`, {
         userName: userName,
@@ -64,12 +72,58 @@ function App() {
     return result;
   }
 
+
+  const WalletC = async () => {
+    await WalletConnect();
+    const add = await getUserAddress();
+    connectwalletBackend(add)
+    setUser(add);
+  };
+
+  const Metamask = async () => {
+    await MetaMasklogin();
+    const add = await getUserAddress();
+    connectwalletBackend(add)
+    window.localStorage.setItem("wallet", "wallet");
+    setUser(add);
+  };
+
+  const Dissconnect = async () => {
+    await DissconnectWallet();
+    setUser(undefined);
+    setUserExist(false);
+    window.localStorage.removeItem("wallet");
+    window.location.replace("/");
+  };
+
+  const connectwalletBackend = async(add)=>{
+    try {
+      const user = window.localStorage.getItem("username")
+      axios.post(`${url}/join/fillinguser`, {
+        username:user,
+        walletType:"external",
+        wallet_Address:add,
+      })
+      .then((res) => {
+        // window.localStorage.setItem("username", userName);
+        window.location.replace("/fundwallet");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+
+
   return (
     <div className="">
       <Router>
         <Routes>
           <Route path="/" element={<Home login={login} />} />
-          <Route path="/connectwallet" element={<Connect_wallet url={url} />} />
+          <Route path="/connectwallet" element={<Connect_wallet url={url} Metamask={Metamask} WalletC={WalletC}/>} />
           <Route path="/createwallet" element={<Create_wallet url={url} />} />
           <Route path="/slice" element={<Slice url={url} />} />
           <Route path="/berry" element={<Berry url={url} />} />
@@ -83,7 +137,7 @@ function App() {
           <Route path="/invite" element={<Invite url={url} />} />
           <Route path="/linkedin" element={<Linkedin url={url} />} />
           <Route path="/link" element={<Linke url={url} />} />
-          <Route path="/mint" element={<Mint url={url} />} />
+          <Route path="/fundwallet" element={<Mint url={url} />} />
           <Route path="/form" element={<Form1 url={url} />} />
           <Route path="*" element={<Page404 />} />
         </Routes>

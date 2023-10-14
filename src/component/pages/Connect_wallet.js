@@ -6,8 +6,14 @@ import linkedin from "../Image/linkedin.png";
 import coinbase from "../Image/coinbase.png";
 import metamask from "../Image/Metamask.png";
 import walletconnect from "../Image/wallet.png";
+import axios from "axios";
+import { useStoreActions, useStoreState } from "easy-peasy";
 
-function Home() {
+function Home({url, Metamask, WalletC}) {
+
+
+
+  
   return (
     <>
       <div className="max-w-35rem m-a">
@@ -19,19 +25,19 @@ function Home() {
             providers.
           </div>
 
-          <div className="bg_clr_gray c-p b-r-15 t-a-c pa-1 p-l-3 d-f a-i-c m-b-2">
+          <div className="bg_clr_gray c-p b-r-15 t-a-c pa-1 p-l-3 d-f a-i-c m-b-2" onClick={()=>Metamask()}>
             <div className="">
               <img src={metamask} className="w-2 m-r-1" />
             </div>
             <div className="">Metamask</div>
           </div>
-          <div className="bg_clr_gray c-p b-r-15 t-a-c pa-1 p-l-3 d-f a-i-c m-b-2">
+          <div className="bg_clr_gray c-p b-r-15 t-a-c pa-1 p-l-3 d-f a-i-c m-b-2" onClick={()=>WalletC()}>
             <div className="">
               <img src={walletconnect} className="w-2 m-r-1" />
             </div>
             <div className="">Wallet Connect</div>
           </div>
-          <div className="bg_clr_gray c-p b-r-15 t-a-c pa-1 p-l-3 d-f a-i-c m-b-2">
+          <div className="bg_clr_gray c-p b-r-15 t-a-c pa-1 p-l-3 d-f a-i-c m-b-2" onClick={()=>Metamask()}>
             <div className="">
               <img src={coinbase} className="w-2 m-r-1" />
             </div>
