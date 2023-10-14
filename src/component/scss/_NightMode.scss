@@ -1,13 +1,11 @@
-
-
 .dark-theme {
-    --background-color: black;
-    --color: white;
+  --background-color: black;
+  --color: white;
 }
 
 .light-theme {
-    --background-color: white;
-    --color: rgb(18, 18, 18);
+  --background-color: white;
+  --color: rgb(18, 18, 18);
 }
 
 html,
@@ -17,9 +15,14 @@ select,
 #dropdown,
 .modal-content,
 .pa-1.offcanvas.offcanvas-start.show,
-svg ,.dropdown-menu.show{
-    background-color: var(--background-color) !important;
-    color: var(--color) !important;
-    fill: var(--color) !important;
-    border-color: var(--color) !important;
+svg,
+.dropdown-menu.show {
+  background-color: var(--background-color) !important;
+  color: var(--color) !important;
+  fill: var(--color) !important;
+  border-color: var(--color) !important;
+}
+
+.bg_clr_gray {
+  background-color: #d9d9d966 !important;
 }

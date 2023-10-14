@@ -1,12 +1,25 @@
+import React, { useState } from "react";
+
+import { useLinkedIn } from "react-linkedin-login-oauth2";
+
 import Handshake from "../Image/hand_shake.png";
 import { Grid } from "@mui/material";
-import React, { useState } from "react";
 
 import Dropdown from "react-bootstrap/Dropdown";
 
 import linkedin from "../Image/linkedin.png";
 
 function Home() {
+  const { linkedInLogin } = useLinkedIn({
+    clientId: "86vhj2q7ukf83q",
+    redirectUri: `${window.location.origin}/linkedin`, // for Next.js, you can use `${typeof window === 'object' && window.location.origin}/linkedin`
+    onSuccess: (code) => {
+      console.log(code);
+    },
+    onError: (error) => {
+      console.log(error);
+    },
+  });
   return (
     <>
       <div className="section">
@@ -20,7 +33,7 @@ function Home() {
         <div className="t-a-c m-b-2">Monetize your professional value</div>
 
         <div className="t-a-c ">
-          <button className="b-r-40 bg_blue b-n c-w  p-x-2 p-y-0_5 ">
+          <button className="b-r-40 bg_blue b-n c-w  p-x-2 p-y-0_5 "   onClick={linkedInLogin}>
             <img src={linkedin} className="w-2" />
             &nbsp; Signup with Linkedin
           </button>
