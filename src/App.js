@@ -16,6 +16,8 @@ import axios from "axios";
 import { useEffect } from "react";
 import Link_berry from "./component/pages/Link_berry";
 import Link_berry_profile from "./component/pages/Link_berry_profile";
+import Callback from "./component/pages/Callback";
+import Linkedin from "./component/pages/Linkedin";
 
 const url = "http://localhost:8001";
 const userName = "nikkrana";
@@ -76,7 +78,10 @@ function App() {
             path="/linkberry/profile"
             element={<Link_berry_profile url={url} />}
           />
-          <Route path="/linkedin" element={<Invite url={url} />} />
+
+          <Route path="/callback" element={<Callback />} />
+          <Route path="/invite" element={<Invite url={url} />} />
+          <Route path="/linkedin" element={<Linkedin url={url} />} />
           <Route path="/link" element={<Linke url={url} />} />
           <Route path="/mint" element={<Mint url={url} />} />
           <Route path="/form" element={<Form1 url={url} />} />
