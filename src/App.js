@@ -15,6 +15,8 @@ import Berry from "./component/pages/Berry";
 import axios from "axios";
 import { useEffect } from "react";
 import Link_berry from "./component/pages/Link_berry";
+import Link_berry_profile from "./component/pages/Link_berry_profile";
+
 const url = "http://localhost:8001";
 const userName = "nikkrana";
 
@@ -61,7 +63,7 @@ function App() {
   }
 
   return (
-    <div className="container-kws">
+    <div className="">
       <Router>
         <Routes>
           <Route path="/" element={<Home login={login} />} />
@@ -70,6 +72,10 @@ function App() {
           <Route path="/slice" element={<Slice url={url} />} />
           <Route path="/berry" element={<Berry url={url} />} />
           <Route path="/linkberry" element={<Link_berry url={url} />} />
+          <Route
+            path="/linkberry/profile"
+            element={<Link_berry_profile url={url} />}
+          />
           <Route path="/linkedin" element={<Invite url={url} />} />
           <Route path="/link" element={<Linke url={url} />} />
           <Route path="/mint" element={<Mint url={url} />} />
