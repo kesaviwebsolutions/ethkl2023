@@ -18,6 +18,7 @@ import Link_berry from "./component/pages/Link_berry";
 import Link_berry_profile from "./component/pages/Link_berry_profile";
 import Callback from "./component/pages/Callback";
 import Linkedin from "./component/pages/Linkedin";
+import Key from "./component/pages/Key";
 
 import {
   DissconnectWallet,
