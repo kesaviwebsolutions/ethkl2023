@@ -4,21 +4,24 @@ import home from "../Image/home.png";
 import chat from "../Image/chat.png";
 import watchlist from "../Image/watchlist.png";
 import share from "../Image/share.png";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 function Sidebar() {
   return (
-    <div className="br-1"> 
-      <div className="d-f a-i-c pa-1 ">
-        <div className="">
-          <img src={blue_circle} className="w-2 m-r-1" />
+    <div className="br-1">
+      <Link to="/linkberry/profile">
+        <div className="d-f a-i-c pa-1 ">
+          <div className="">
+            <img src={blue_circle} className="w-2 m-r-1" />
+          </div>
+          <div className="">
+            {" "}
+            <div className="">John Doe</div>{" "}
+            <div className="">0x697...087sg</div>
+          </div>
         </div>
-        <div className="">
-          {" "}
-          <div className="">John Doe</div> <div className="">0x697...087sg</div>
-        </div>
-      </div>
-      <NavLink to="">
+      </Link>
+      <NavLink to="/linkberry">
         <div className=" pa-1">
           {" "}
           <img src={home} className="w-2" />
