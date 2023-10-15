@@ -17,6 +17,9 @@ Features of linkBerry:
 
 ![Trading Slices](https://bafybeiheoh7dzefvuqjvxnp5nm4ulpdrfceqhgv6y53srlq3ur4j67qw5i.ipfs.nftstorage.link/2023-10-15%2010.38.03.jpg "Trading Slices")
 
+## Video demo of the linkBerry
+[![LinkBerry Demo](https://bafybeiheoh7dzefvuqjvxnp5nm4ulpdrfceqhgv6y53srlq3ur4j67qw5i.ipfs.nftstorage.link/linkberry-screen1.png)](https://www.loom.com/share/bec72fdfc2bc4782aec80ddf3d026632?sid=15117fd8-fc2c-4322-bcd5-af4f4108b897)
+
 ## Smart Contract for trading of slices on Mantle Network ##
 [Contract for LinkBerry's Slices] (https://explorer.testnet.mantle.xyz/address/0xc5404FD309E06EB7AdCc335B5Eb8CD4fB89Ae1E3)
 
