@@ -6,7 +6,7 @@ import Tabs from "react-bootstrap/Tabs";
 import meta from "../Image/meta.png";
 import { Grid } from "@mui/material";
 import axios from "axios";
-import { getPrice } from "../web3/web3";
+import { getPrice, get_LinkBerry_Contract } from "../web3/web3";
 
 function Link_berry({url}) {
   const [value, setValue] = React.useState("one");
@@ -21,7 +21,9 @@ function Link_berry({url}) {
   const [username, setUsername] = useState();
   const [holders, setHolders] = useState([])
   const [holdings, setHoldings] = useState([])
-  const [price, setPrice] = useState(0)
+  const [price, setPrice] = useState(0);
+  const [tx, setTx] = useState([])
+  const [open, setOpen] = useState(false)
 
 
   useEffect(()=>{
@@ -35,6 +37,7 @@ function Link_berry({url}) {
           setUsername(user)
           setHoldings(res.data.holders)
           setHolders(res.data.holdings)
+          setTx(res.data.userTx)
           setUser(res.data.wallet_Address)
           setFollower(res.data.followers)
           setCollections(res.data.connections)
@@ -44,7 +47,63 @@ function Link_berry({url}) {
         })
       }
     init();
-  },[])
+  },[open])
+
+
+
+  const Buy = async()=>{
+    try {
+      const myusername = window.localStorage.getItem("username")
+      const price = await getPrice(user, days,follower, collections);
+      const contract = await get_LinkBerry_Contract();
+      console.log(user, days, collections, follower)
+      setOpen(true)
+      const data = await contract.methods.buySlices(user, days, collections, follower).send({from:user,value:price});
+      if(data.status){
+        setOpen(false)
+        // axios.post(`${url}/user/buy/holdings`,{
+        //   myusername:myusername,
+        //   boughtusername:user,
+        //   units:1
+        // }).then((res)=>{
+        //   console.log("Bougth")
+        // })
+        // axios.post(`${url}/user/buysell/tx`,{
+        //   myusername:myusername,
+        //   boughtusername:user,
+        //   units:1,
+        //   method:'buy'
+        // }).then((res)=>{
+        //   console.log("Bougth")
+        // })
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const sell = async () => {
+    try {
+      const myusername = window.localStorage.getItem("username")
+      const price = await getPrice(user, days,follower, collections);
+      const contract = await get_LinkBerry_Contract();
+      setOpen(true)
+      const data = await contract.methods.sellSlices(user, days, collections, follower).send({from:user,value:price});
+      if(data.status){
+        axios.post(`${url}/user/buysell/tx`,{
+          myusername:myusername,
+          boughtusername:user,
+          units:1,
+          method:'Sell'
+        }).then((res)=>{
+          console.log("Bougth")
+          setOpen(false)
+        })
+      }
+    } catch (error) {
+      // console.log(error)
+    }
+  };
 
 
 
@@ -77,35 +136,17 @@ function Link_berry({url}) {
                 className="mb-3 m-t-3"
               >
                 <Tab eventKey="Transaction" title="Transaction">
-                  <div className="d-f a-i-c j-c-s-b  m-y-1">
-                    <div className="m-r-2 f-w-600">
-                      <img src={blue_circle} className="w-2_5 " /> &nbsp;
-                      arrnaya
-                    </div>
-                    <div className="">2 key</div>
+                 {tx && tx.map((res)=>{
+                  return <div className="d-f a-i-c j-c-s-b  m-y-1">
+                  <div className="m-r-2 f-w-600">
+                    <img src={blue_circle} className="w-2_5 " /> &nbsp;
+                    {res.user} {res.method}
                   </div>
+                  <div className="">{res.value} key</div>
+                </div>
+                 }) }
 
-                  <div className="d-f a-i-c j-c-s-b  m-y-1">
-                    <div className="m-r-2 f-w-600">
-                      <img src={blue_circle} className="w-2_5 " /> &nbsp;
-                      arrnaya
-                    </div>
-                    <div className="">2 key</div>
-                  </div>
-                  <div className="d-f a-i-c j-c-s-b  m-y-1">
-                    <div className="m-r-2 f-w-600">
-                      <img src={blue_circle} className="w-2_5 " /> &nbsp;
-                      arrnaya
-                    </div>
-                    <div className="">2 key</div>
-                  </div>
-                  <div className="d-f a-i-c j-c-s-b  m-y-1">
-                    <div className="m-r-2 f-w-600">
-                      <img src={blue_circle} className="w-2_5 " /> &nbsp;
-                      arrnaya
-                    </div>
-                    <div className="">2 key</div>
-                  </div>
+                  
                 </Tab>
                 <Tab eventKey="Slice Holder" title="Slice Holder">
 
@@ -138,8 +179,8 @@ function Link_berry({url}) {
               </Tabs>
 
               <div className="m-t-4 d-f j-c-s-e ">
-              <button className="bg_blue c-w p-x-3 p-y-0_5 b-r-15 b-n f-s-1_25">Buy</button>
-              <button className="bg_blue c-w p-x-3 p-y-0_5 b-r-15 b-n f-s-1_25">Sell</button>
+              <button className="bg_blue c-w p-x-3 p-y-0_5 b-r-15 b-n f-s-1_25" onClick={()=>Buy()}>Buy</button>
+              <button className="bg_blue c-w p-x-3 p-y-0_5 b-r-15 b-n f-s-1_25" onClick={()=>sell()}>Sell</button>
               </div>
             </div>
           </div>
