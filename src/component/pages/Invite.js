@@ -43,6 +43,7 @@ function Home({ url }) {
               type="text"
               onChange={(e) => setCode(e.target.value)}
               className="b-1 b-r-40 b-c-t w-100 pa-0_5 t-a-c"
+              placeholder="Invite code"
             />
           </div>
           <div className=" m-t-3 w-100">

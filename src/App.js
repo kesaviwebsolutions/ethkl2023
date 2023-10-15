@@ -73,10 +73,12 @@ function App() {
       })
       .then((res) => {
         console.log(res);
+        console.log();
         window.localStorage.setItem("username", user_name);
-        setInterval(()=>{
-          window.location.replace("/linkedin");
-        },3000)
+
+        setInterval(() => {
+          window.location.replace("/invite");
+        }, 3000);
       })
       .catch((err) => {
         console.log(err);
@@ -98,7 +100,7 @@ function App() {
   const WalletC = async () => {
     await WalletConnect();
     const add = await getUserAddress();
-    console.log("wallet", add)
+    console.log("wallet", add);
     connectwalletBackend(add);
     setUser(add);
   };
@@ -114,7 +116,7 @@ function App() {
     await MetaMasklogin();
     const add = await getUserAddress();
     connectwalletBackend(add);
-    console.log("wallet", add)
+    console.log("wallet", add);
     window.localStorage.setItem("wallet", "wallet");
     setUser(add);
   };
@@ -130,16 +132,17 @@ function App() {
   const connectwalletBackend = async (add) => {
     try {
       const user = window.localStorage.getItem("username");
-      await axios.post(`${url}/join/fillinguser`, {
+      await axios
+        .post(`${url}/join/fillinguser`, {
           username: user,
           walletType: "external",
           wallet_Address: add,
         })
         .then((res) => {
           // window.localStorage.setItem("username", userName);
-          setInterval(()=>{
+          setInterval(() => {
             window.location.replace("/fundwallet");
-          },3000)
+          }, 3000);
         })
         .catch((err) => {
           console.log(err);
@@ -177,9 +180,9 @@ function App() {
           response.data.username,
           response.data.profile_pic_url
         );
-        localStorage.setItem("linkedin_login", JSON.stringify(response.data));
-        notify("Successful Login");
-        window.location.href = `/invite`;
+        // localStorage.setItem("linkedin_login", JSON.stringify(response.data));
+        // notify("Successful Login");
+        // window.location.href = `/invite`;
         setOpen(false);
       } else {
         setOpen(false);
@@ -194,43 +197,47 @@ function App() {
 
   return (
     <>
-    <div className="">
-      <Router>
-        <Routes>
-          <Route path="/" element={<Home handleSubmit={handleSubmit} />} />
-          <Route
-            path="/connectwallet"
-            element={
-              <Connect_wallet url={url} Metamask={Metamask} WalletC={WalletC} />
-            }
-          />
-          <Route path="/linkberry/:user" element={<Key url={url} />} />
-          <Route path="/createwallet" element={<Create_wallet url={url} />} />
-          <Route path="/airdrop" element={<Airdrop url={url} />} />
-          <Route path="/slice" element={<Slice url={url} />} />
-          <Route path="/berry" element={<Berry url={url} />} />
-          <Route path="/linkberry" element={<Link_berry url={url} />} />
-          <Route
-            path="/linkberry/profile/:user"
-            element={<Link_berry_profile url={url} />}
-          />
+      <div className="">
+        <Router>
+          <Routes>
+            <Route path="/" element={<Home handleSubmit={handleSubmit} />} />
+            <Route
+              path="/connectwallet"
+              element={
+                <Connect_wallet
+                  url={url}
+                  Metamask={Metamask}
+                  WalletC={WalletC}
+                />
+              }
+            />
+            <Route path="/linkberry/:user" element={<Key url={url} />} />
+            <Route path="/createwallet" element={<Create_wallet url={url} />} />
+            <Route path="/airdrop" element={<Airdrop url={url} />} />
+            <Route path="/slice" element={<Slice url={url} />} />
+            <Route path="/berry" element={<Berry url={url} />} />
+            <Route path="/linkberry" element={<Link_berry url={url} />} />
+            <Route
+              path="/linkberry/profile/:user"
+              element={<Link_berry_profile url={url} />}
+            />
 
-          <Route path="/callback" element={<Callback />} />
-          <Route path="/invite" element={<Invite url={url} />} />
-          <Route path="/linkedin" element={<Linkedin url={url} />} />
-          <Route path="/link" element={<Linke url={url} />} />
-          <Route path="/fundwallet" element={<Mint url={url} />} />
-          <Route path="/form" element={<Form1 url={url} />} />
-          <Route path="*" element={<Page404 />} />
-        </Routes>
-      </Router>
-    </div>
-    <Backdrop
-    sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
-    open={open}
-  >
-    <CircularProgress color="inherit" />
-  </Backdrop>
+            <Route path="/callback" element={<Callback />} />
+            <Route path="/invite" element={<Invite url={url} />} />
+            <Route path="/linkedin" element={<Linkedin url={url} />} />
+            <Route path="/link" element={<Linke url={url} />} />
+            <Route path="/fundwallet" element={<Mint url={url} />} />
+            <Route path="/form" element={<Form1 url={url} />} />
+            <Route path="*" element={<Page404 />} />
+          </Routes>
+        </Router>
+      </div>
+      <Backdrop
+        sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={open}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
     </>
   );
 }
