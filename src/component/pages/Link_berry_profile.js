@@ -114,7 +114,7 @@ function Link_berry({url}) {
         <Grid item xs={12} sm={12} md={3} lg={2}>
           <Sidebar url={url}/>
         </Grid>
-        <Grid item xs={12} sm={12} md={9} lg={10}>
+        <Grid item xs={12} sm={12} md={9} lg={10} className="pa-2">
           <div className="">
             <div className="m-b-2 t-a-c ">
               <img src={meta} className="b-r-50 w-15  " />
@@ -124,7 +124,7 @@ function Link_berry({url}) {
             </div>
 
             <div className="d-f a-i-c j-c-c m-b-2">
-            <div className="m-r-1">{price/10**18} MNT</div>
+            <div className="m-r-1">{price/10**18} MNT </div>
               <div className="m-r-1">{holders.length} Slice holders</div>
               <div className="">{holdings.length} Slice owned</div>
             </div>
