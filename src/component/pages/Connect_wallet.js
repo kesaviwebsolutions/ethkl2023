@@ -16,7 +16,7 @@ function Home({url, Metamask, WalletC}) {
   
   return (
     <>
-      <div className="max-w-35rem m-a">
+      <div className="max-w-35rem m-a pa-2">
         <div className="section">
           <div className="t-a-c f-w-800 f-s-3 m-b-2">Connect Wallet</div>
 

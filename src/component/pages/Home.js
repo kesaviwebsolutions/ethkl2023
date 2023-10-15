@@ -66,7 +66,7 @@ function Home({handleSubmit}) {
 
   return (
     <>
-      <div className="section">
+      <div className="section pa-2">
         <div className="m-b-2 t-a-c ">
           <img src={Handshake} className="w-7" />
         </div>

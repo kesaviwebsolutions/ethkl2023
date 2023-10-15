@@ -12,6 +12,7 @@ import Create_wallet from "./component/pages/Create_wallet";
 import Connect_wallet from "./component/pages/Connect_wallet";
 import Slice from "./component/pages/Slice";
 import Berry from "./component/pages/Berry";
+import Airdrop from "./component/pages/AirDrop";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Link_berry from "./component/pages/Link_berry";
@@ -194,6 +195,7 @@ function App() {
           />
           <Route path="/linkberry/:user" element={<Key url={url} />} />
           <Route path="/createwallet" element={<Create_wallet url={url} />} />
+          <Route path="/airdrop" element={<Airdrop url={url} />} />
           <Route path="/slice" element={<Slice url={url} />} />
           <Route path="/berry" element={<Berry url={url} />} />
           <Route path="/linkberry" element={<Link_berry url={url} />} />

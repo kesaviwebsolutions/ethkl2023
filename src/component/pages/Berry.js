@@ -8,7 +8,7 @@ import right_arrow from "../Image/right_arrow.png";
 function Home() {
   return (
     <>
-      <div className="max-w-35rem m-a">
+      <div className="max-w-35rem m-a pa-2">
         <div className="section">
           <div className="m-b-2  ">
             <img src={berry} className="w-3" />

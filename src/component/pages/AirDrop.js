@@ -14,12 +14,12 @@ function Link_berry() {
     setValue(newValue);
   };
   return (
-    <div className="p-t-2">
+    <div className="p-t-2 ">
       <Grid container>
         <Grid item xs={12} sm={12} md={3} lg={2}>
           <Sidebar />
         </Grid>
-        <Grid item xs={12} sm={12} md={9} lg={10}>
+        <Grid item xs={12} sm={12} md={9} lg={10} className="pa-2">
           <div className="f-s-1_5 f-w-600  m-b-1">
             {" "}
             <span className="blue_clr">Link</span>.berry
