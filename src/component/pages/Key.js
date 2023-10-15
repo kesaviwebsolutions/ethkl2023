@@ -50,6 +50,7 @@ function Link_berry({ url }) {
       const myusername = window.localStorage.getItem("username")
       const price = await getPrice(userAddrees, days,follower, collections);
       const contract = await get_LinkBerry_Contract();
+      console.log(userAddrees, days, collections, follower)
       const data = await contract.methods.buySlices(userAddrees, days, collections, follower).send({from:userWalletConnect,value:price});
       if(data.status){
         axios.post(`${url}/user/buy/holdings`,{

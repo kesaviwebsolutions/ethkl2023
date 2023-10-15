@@ -13,13 +13,12 @@ import Connect_wallet from "./component/pages/Connect_wallet";
 import Slice from "./component/pages/Slice";
 import Berry from "./component/pages/Berry";
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Link_berry from "./component/pages/Link_berry";
 import Link_berry_profile from "./component/pages/Link_berry_profile";
 import Callback from "./component/pages/Callback";
 import Linkedin from "./component/pages/Linkedin";
 import Key from "./component/pages/Key";
-import Airdrop from "./component/pages/AirDrop";
 
 import {
   DissconnectWallet,
@@ -28,17 +27,29 @@ import {
   getUserAddress,
 } from "./component/web3/web3";
 import { useStoreActions, useStoreState } from "easy-peasy";
+
+import toast, { Toaster } from "react-hot-toast";
+
+const notify = (msg) => toast.success(msg);
+const notifyError = (msg) => toast.error(msg);
+const notifyMessage = (msg) =>
+  toast(msg, {
+    duration: 10000,
+  });
+
+
 const url = "http://localhost:8001";
 const userName = "nikkrana";
 
 function App() {
   const setUser = useStoreActions((action) => action.setUser);
   const user = useStoreState((state) => state.user);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const init = async () => {
-      const user = window.localStorage.getItem("username");
-      if (user) {
+      const user = window.localStorage.getItem("username")
+      if(user){
         Metamasklogin();
       }
     };
@@ -131,11 +142,51 @@ function App() {
     }
   };
 
+  const handleExtractClick = (url) => {
+    const prefix = "https://www.linkedin.com/in/";
+    if (url.startsWith(prefix)) {
+      const id = url.slice(prefix.length).replace(/\/$/, ""); // This also removes the trailing slash
+      return id;
+    } else {
+      return "Invalid LinkedIn URL";
+    }
+  };
+  
+
+  const handleSubmit = async (url) => {
+    try {
+      setOpen(true);
+      const username = handleExtractClick(url);
+      console.log("User", username, url)
+      const response = await axios.post(`http://localhost:5000/get_profile`, {
+        username: username,
+        profile_uri: url,
+      });
+
+      if (response && response.data) {
+        // Access response.data here
+        console.log("Token:", response.data);
+        login(response.data.connections, response.data.followers, )
+        localStorage.setItem("linkedin_login", JSON.stringify(response.data));
+        notify("Successful Login");
+        window.location.href = `/invite`;
+        setOpen(false);
+      } else {
+        setOpen(false);
+        console.error("Error: Response data is undefined or missing.");
+      }
+    } catch (error) {
+      setOpen(false);
+      // notifyError("Wrong Username or Password");
+      console.error("Error:", error.response.data.message);
+    }
+  };
+
   return (
     <div className="">
       <Router>
         <Routes>
-          <Route path="/" element={<Home login={login} />} />
+          <Route path="/" element={<Home login={login} handleSubmit={handleSubmit}/>} />
           <Route
             path="/connectwallet"
             element={
@@ -151,7 +202,7 @@ function App() {
             path="/linkberry/profile/:user"
             element={<Link_berry_profile url={url} />}
           />
-          <Route path="/airdrop" element={<Airdrop url={url} />} />
+
           <Route path="/callback" element={<Callback />} />
           <Route path="/invite" element={<Invite url={url} />} />
           <Route path="/linkedin" element={<Linkedin url={url} />} />

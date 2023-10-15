@@ -20,62 +20,49 @@ const notifyMessage = (msg) =>
     duration: 10000,
   });
 
-function Home() {
+function Home({handleSubmit}) {
   const [linkedins, setlinkedins] = useState(false);
   const [open, setOpen] = React.useState(false);
   const [url, seturl] = useState("");
   const [extractedId, setExtractedId] = useState("");
 
-  const navigate = useNavigate();
-  const { linkedInLogin } = useLinkedIn({
-    clientId: "86vhj2q7ukf83q",
-    redirectUri: `${window.location.origin}/linkedin`, // for Next.js, you can use `${typeof window === 'object' && window.location.origin}/linkedin`
-    onSuccess: (code) => {
-      console.log(code);
-    },
-    onError: (error) => {
-      console.log(error);
-    },
-  });
 
-  const handleExtractClick = (url) => {
-    const prefix = "https://www.linkedin.com/in/";
-    if (url.startsWith(prefix)) {
-      const id = url.slice(prefix.length).replace(/\/$/, ""); // This also removes the trailing slash
-      return id;
-    } else {
-      return "Invalid LinkedIn URL";
-    }
-  };
 
-  const username = handleExtractClick(url);
-  console.log("user", username);
+  // function extractLinkedInUsername(linkedinURL) {
+  //   const prefix = "https://linkedin.com/in/";
+  //   if (linkedinURL.startsWith(prefix)) {
+  //     return linkedinURL.slice(prefix.length);
+  //   }
+  //   return linkedinURL; // If the URL doesn't start with the prefix, return the original URL.
+  // }
 
-  const handleSubmit = async () => {
-    try {
-      setOpen(true);
-      const response = await axios.post(`http://localhost:5000/get_profile`, {
-        username: username,
-        profile_uri: url,
-      });
+  // const username = extractLinkedInUsername(url);
 
-      if (response && response.data) {
-        // Access response.data here
-        console.log("Token:", response.data);
-        localStorage.setItem("linkedin_login", JSON.stringify(response.data));
-        notify("Successful Login");
-        window.location.href = `/invite`;
-        setOpen(false);
-      } else {
-        setOpen(false);
-        console.error("Error: Response data is undefined or missing.");
-      }
-    } catch (error) {
-      setOpen(false);
-      // notifyError("Wrong Username or Password");
-      console.error("Error:", error.response.data.message);
-    }
-  };
+  // const handleSubmit = async () => {
+  //   try {
+  //     setOpen(true);
+  //     const response = await axios.post(`http://localhost:5000/get_profile`, {
+  //       username: username,
+  //       profile_uri: url,
+  //     });
+
+  //     if (response && response.data) {
+  //       // Access response.data here
+  //       console.log("Token:", response.data);
+  //       localStorage.setItem("linkedin_login", JSON.stringify(response.data));
+  //       notify("Successful Login");
+  //       window.location.href = `/invite`;
+  //       setOpen(false);
+  //     } else {
+  //       setOpen(false);
+  //       console.error("Error: Response data is undefined or missing.");
+  //     }
+  //   } catch (error) {
+  //     setOpen(false);
+  //     // notifyError("Wrong Username or Password");
+  //     console.error("Error:", error.response.data.message);
+  //   }
+  // };
 
   return (
     <>
@@ -119,7 +106,7 @@ function Home() {
             <button
               className="b-r-40 bg_blue b-n c-w  w-15 p-y-0_5 "
               // onClick={linkedInLogin}
-              onClick={() => handleSubmit()}
+              onClick={() => handleSubmit(url)}
             >
               Submit
             </button>

@@ -39,6 +39,7 @@ function Home({url}) {
       const userlogedin = window.localStorage.getItem("username");
       const price = await getPrice(user, days,follower, collections);
       const contract = await get_LinkBerry_Contract();
+      console.log(user, days, collections, follower)
       const data = await contract.methods.buySlices(user, days, collections, follower).send({from:user,value:price});
       if(data.status){
         window.location.replace(`/linkberry/profile/${userlogedin}`)
