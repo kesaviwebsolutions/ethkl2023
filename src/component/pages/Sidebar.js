@@ -5,6 +5,7 @@ import chat from "../Image/chat.png";
 import watchlist from "../Image/watchlist.png";
 import share from "../Image/share.png";
 import { Link, NavLink } from "react-router-dom";
+import profile from "../Image/profile.png";
 import axios from "axios";
 
 function Sidebar({ url }) {
@@ -92,6 +93,11 @@ function Sidebar({ url }) {
           <Link to="/airdrop">
             <div className="">
               <img src={share} className="w-5" />
+            </div>
+          </Link>
+          <Link to={`/linkberry/profile/${username}`}>
+            <div className="">
+              <img src={profile} className="w-5" />
             </div>
           </Link>
         </div>

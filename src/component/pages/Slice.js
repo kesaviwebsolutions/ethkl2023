@@ -53,7 +53,7 @@ function Home({url}) {
 
   return (
     <>
-      <div className="max-w-35rem m-a">
+      <div className="max-w-35rem m-a pa-2">
         <div className="section">
           <div className="m-b-2  ">
             <img src={slice} className="w-3" />
