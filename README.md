@@ -6,6 +6,17 @@ Features of linkBerry:
 - Trading of slices (shares of user) on mantle network via smart contract
 - SliceWorth driven by user's engagement with link.berry, user's no of connections, no of followers on linkedin profile
 
+## Screenshots of the webapp
+![On Boarding Screen](https://bafybeiheoh7dzefvuqjvxnp5nm4ulpdrfceqhgv6y53srlq3ur4j67qw5i.ipfs.nftstorage.link/linkberry-screen1.png "On Boarding Screen")
+
+![Wallet creation](https://bafybeiheoh7dzefvuqjvxnp5nm4ulpdrfceqhgv6y53srlq3ur4j67qw5i.ipfs.nftstorage.link/2023-10-15%2010.29.47.jpg "Wallet Creation")
+
+![Landing Page](https://bafybeiheoh7dzefvuqjvxnp5nm4ulpdrfceqhgv6y53srlq3ur4j67qw5i.ipfs.nftstorage.link/2023-10-15%2010.29.51.jpg "Landing page")
+
+![Invite Codes](https://bafybeiheoh7dzefvuqjvxnp5nm4ulpdrfceqhgv6y53srlq3ur4j67qw5i.ipfs.nftstorage.link/2023-10-15%2010.33.18.jpg "Invite Codes")
+
+![Trading Slices](https://bafybeiheoh7dzefvuqjvxnp5nm4ulpdrfceqhgv6y53srlq3ur4j67qw5i.ipfs.nftstorage.link/2023-10-15%2010.38.03.jpg "Trading Slices")
+
 ## Smart Contract for trading of slices on Mantle Network ##
 [Contract for LinkBerry's Slices] (https://explorer.testnet.mantle.xyz/address/0xc5404FD309E06EB7AdCc335B5Eb8CD4fB89Ae1E3)
 
