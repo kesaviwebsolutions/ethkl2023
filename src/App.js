@@ -162,7 +162,6 @@ function App() {
         username: username,
         profile_uri: url,
       });
-
       if (response && response.data) {
         // Access response.data here
         console.log("Token:", response.data);
