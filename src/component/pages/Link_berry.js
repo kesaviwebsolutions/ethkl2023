@@ -83,7 +83,7 @@ function Link_berry({url}) {
                   </div>
                   <div className="">
                  
-                    <div className="">{res.price/10**18} MNT</div>
+                    <div className="">{res.price/10**18} MNT / Slice</div>
                   </div>
                 </div>
               </div>

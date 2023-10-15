@@ -30,6 +30,7 @@ import {
 import { useStoreActions, useStoreState } from "easy-peasy";
 
 import toast, { Toaster } from "react-hot-toast";
+import { Backdrop, CircularProgress } from "@mui/material";
 
 const notify = (msg) => toast.success(msg);
 const notifyError = (msg) => toast.error(msg);
@@ -37,7 +38,6 @@ const notifyMessage = (msg) =>
   toast(msg, {
     duration: 10000,
   });
-
 
 const url = "http://localhost:8001";
 const userName = "nikkrana";
@@ -49,26 +49,27 @@ function App() {
 
   useEffect(() => {
     const init = async () => {
-      const user = window.localStorage.getItem("username")
-      if(user){
+      const user = window.localStorage.getItem("username");
+      if (user) {
         Metamasklogin();
       }
     };
     init();
   }, []);
 
-  const login = async () => {
+  const login = async (connections, follower, username, profile_url) => {
     const codes = [];
     for (let i = 0; i < 6; i++) {
       codes.push(generateUniqueAlphaNumeric(20));
     }
     axios
       .post(`${url}/join`, {
-        userName: userName,
-        followers: 10,
+        userName: username,
+        followers: follower,
         joinAt: new Date().getTime(),
-        connections: 10,
+        connections: connections,
         inviteCodes: codes,
+        profileImage: profile_url,
       })
       .then((res) => {
         console.log(res);
@@ -158,13 +159,12 @@ function App() {
       return "Invalid LinkedIn URL";
     }
   };
-  
 
   const handleSubmit = async (url) => {
     try {
       setOpen(true);
       const username = handleExtractClick(url);
-      console.log("User", username, url)
+      console.log("User", username, url);
       const response = await axios.post(`http://localhost:5000/get_profile`, {
         username: username,
         profile_uri: url,
@@ -172,7 +172,12 @@ function App() {
       if (response && response.data) {
         // Access response.data here
         console.log("Token:", response.data);
-        login(response.data.connections, response.data.followers, )
+        login(
+          response.data.connections,
+          response.data.followers,
+          response.data.username,
+          response.data.profile_pic_url
+        );
         localStorage.setItem("linkedin_login", JSON.stringify(response.data));
         notify("Successful Login");
         window.location.href = `/invite`;
@@ -189,10 +194,11 @@ function App() {
   };
 
   return (
+    <>
     <div className="">
       <Router>
         <Routes>
-          <Route path="/" element={<Home login={login} handleSubmit={handleSubmit}/>} />
+          <Route path="/" element={<Home handleSubmit={handleSubmit} />} />
           <Route
             path="/connectwallet"
             element={
@@ -220,6 +226,13 @@ function App() {
         </Routes>
       </Router>
     </div>
+    <Backdrop
+    sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+    open={open}
+  >
+    <CircularProgress color="inherit" />
+  </Backdrop>
+    </>
   );
 }
 
