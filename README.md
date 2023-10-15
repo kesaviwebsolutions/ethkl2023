@@ -17,6 +17,9 @@ Features of linkBerry:
 
 ![Trading Slices](https://bafybeiheoh7dzefvuqjvxnp5nm4ulpdrfceqhgv6y53srlq3ur4j67qw5i.ipfs.nftstorage.link/2023-10-15%2010.38.03.jpg "Trading Slices")
 
+## Video demo of the linkBerry
+[![LinkBerry Demo](https://bafybeiheoh7dzefvuqjvxnp5nm4ulpdrfceqhgv6y53srlq3ur4j67qw5i.ipfs.nftstorage.link/linkberry-screen1.png)](https://www.loom.com/share/bec72fdfc2bc4782aec80ddf3d026632?sid=15117fd8-fc2c-4322-bcd5-af4f4108b897)
+
 ## Smart Contract for trading of slices on Mantle Network ##
 [Contract for LinkBerry's Slices] (https://explorer.testnet.mantle.xyz/address/0xc5404FD309E06EB7AdCc335B5Eb8CD4fB89Ae1E3)
 
@@ -81,6 +84,9 @@ if(linkberryUser == msg.sender) {
 
 ## Challenges in the smart contract
 Building an oracle on mantle to handle the data related to user's days spent on the link.berry app, linkedin connections & followers and also linkedin account activity history, so that the smart contract can fetch that data in decentralized manner and be free of any sort of manipulatioins in those parameters. Scheduled for v 1.1.0 of link.berry
+
+## Before running the frontend of the app, please head to the the backend repo and run the backend and linkedin scraping script first
+[Backend Code for linkBerry] (https://github.com/kesaviwebsolutions/link_berryBackend)
 
 # How to run the frontend on localhost
 
