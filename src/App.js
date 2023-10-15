@@ -136,8 +136,10 @@ function App() {
           wallet_Address: add,
         })
         .then((res) => {
-          // window.localStorage.setItem("username", userName);
-          window.location.replace("/fundwallet");
+          window.localStorage.setItem("username", userName);
+          setInterval(()=>{
+            window.location.replace("/fundwallet");
+          },3000)
         })
         .catch((err) => {
           console.log(err);
