@@ -73,7 +73,9 @@ function App() {
       .then((res) => {
         console.log(res);
         window.localStorage.setItem("username", userName);
-        window.location.replace("/linkedin");
+        setInterval(()=>{
+          window.location.replace("/linkedin");
+        },3000)
       })
       .catch((err) => {
         console.log(err);
@@ -95,6 +97,7 @@ function App() {
   const WalletC = async () => {
     await WalletConnect();
     const add = await getUserAddress();
+    console.log("wallet", add)
     connectwalletBackend(add);
     setUser(add);
   };
@@ -110,6 +113,7 @@ function App() {
     await MetaMasklogin();
     const add = await getUserAddress();
     connectwalletBackend(add);
+    console.log("wallet", add)
     window.localStorage.setItem("wallet", "wallet");
     setUser(add);
   };
