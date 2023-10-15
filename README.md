@@ -85,6 +85,9 @@ if(linkberryUser == msg.sender) {
 ## Challenges in the smart contract
 Building an oracle on mantle to handle the data related to user's days spent on the link.berry app, linkedin connections & followers and also linkedin account activity history, so that the smart contract can fetch that data in decentralized manner and be free of any sort of manipulatioins in those parameters. Scheduled for v 1.1.0 of link.berry
 
+## Before running the frontend of the app, please head to the the backend repo and run the backend and linkedin scraping script first
+[Backend Code for linkBerry] (https://github.com/kesaviwebsolutions/link_berryBackend)
+
 # How to run the frontend on localhost
 
 Pre-requisites:
