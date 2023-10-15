@@ -57,14 +57,14 @@ function App() {
     init();
   }, []);
 
-  const login = async (connections, follower, username, profile_url) => {
+  const login = async (connections, follower, user_name, profile_url) => {
     const codes = [];
     for (let i = 0; i < 6; i++) {
       codes.push(generateUniqueAlphaNumeric(20));
     }
     axios
       .post(`${url}/join`, {
-        userName: username,
+        userName: user_name,
         followers: follower,
         joinAt: new Date().getTime(),
         connections: connections,
@@ -73,7 +73,7 @@ function App() {
       })
       .then((res) => {
         console.log(res);
-        window.localStorage.setItem("username", userName);
+        window.localStorage.setItem("username", user_name);
         setInterval(()=>{
           window.location.replace("/linkedin");
         },3000)
@@ -130,14 +130,13 @@ function App() {
   const connectwalletBackend = async (add) => {
     try {
       const user = window.localStorage.getItem("username");
-      axios
-        .post(`${url}/join/fillinguser`, {
+      await axios.post(`${url}/join/fillinguser`, {
           username: user,
           walletType: "external",
           wallet_Address: add,
         })
         .then((res) => {
-          window.localStorage.setItem("username", userName);
+          // window.localStorage.setItem("username", userName);
           setInterval(()=>{
             window.location.replace("/fundwallet");
           },3000)
