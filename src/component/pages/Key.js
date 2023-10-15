@@ -60,6 +60,14 @@ function Link_berry({ url }) {
         }).then((res)=>{
           console.log("Bougth")
         })
+        axios.post(`${url}/user/buysell/tx`,{
+          myusername:myusername,
+          boughtusername:user,
+          units:1,
+          method:'buy'
+        }).then((res)=>{
+          console.log("Bougth")
+        })
       }
     } catch (error) {
       console.log(error)
@@ -73,7 +81,14 @@ function Link_berry({ url }) {
       const contract = await get_LinkBerry_Contract();
       const data = await contract.methods.sellSlices(userAddrees, days, collections, follower).send({from:userWalletConnect,value:price});
       if(data.status){
-      
+        axios.post(`${url}/user/buysell/tx`,{
+          myusername:myusername,
+          boughtusername:user,
+          units:1,
+          method:'Sell'
+        }).then((res)=>{
+          console.log("Bougth")
+        })
       }
     } catch (error) {
       // console.log(error)
