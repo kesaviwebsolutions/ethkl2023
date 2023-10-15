@@ -82,8 +82,28 @@ if(linkberryUser == msg.sender) {
 ## Challenges in the smart contract
 Building an oracle on mantle to handle the data related to user's days spent on the link.berry app, linkedin connections & followers and also linkedin account activity history, so that the smart contract can fetch that data in decentralized manner and be free of any sort of manipulatioins in those parameters. Scheduled for v 1.1.0 of link.berry
 
+# How to run the frontend on localhost
 
+Pre-requisites:
+- Nodejs (version 18.13.0 or newer)
+- yarn (if being used)
 
+1. Clone this repo
+```
+git clone https://github.com/kesaviwebsolutions/link.berry
+```
+2. switch to the directory
+```
+cd link.berry
+```
+3. install node modules
+```
+npm i or yarn
+```
+4. start on localhost
+```
+npm start or yarn start
+```
 
 
 
