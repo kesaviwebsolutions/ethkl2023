@@ -1,8 +1,13 @@
-# LinkBerry
+# LinkBerry v 1.0.0
 Repository for hackathon submission in ETH Kuala Lumpur 2023
 
+Features of linkBerry:
+- Monetisation of professional value for linkedin users
+- Trading of slices (shares of user) on mantle network via smart contract
+- SliceWorth driven by user's engagement with link.berry, user's no of connections, no of followers on linkedin profile
+
 ## Smart Contract for trading of slices on Mantle Network ##
-[Contract for LinkBerry's Slices] (https://explorer.testnet.mantle.xyz/address/0x53eb0AC3eef4037063e015Da3Fac1FDCb0E36060/)
+[Contract for LinkBerry's Slices] (https://explorer.testnet.mantle.xyz/address/0xc5404FD309E06EB7AdCc335B5Eb8CD4fB89Ae1E3)
 
 ## Improvements made over friend.tech in the Smart Contract ##
 
@@ -61,7 +66,10 @@ if(linkberryUser == msg.sender) {
         }
 ```
 ### Platform collects the revenue from very first purchase of slice
-### Users can only buy 1 slice at a time
+### Users can trade only 1 slice at a time
+
+## Challenges in the smart contract
+Building an oracle on mantle to handle the data related to user's days spent on the link.berry app, linkedin connections & followers and also linkedin account activity history, so that the smart contract can fetch that data in decentralized manner and be free of any sort of manipulatioins in those parameters. Scheduled for v 1.1.0 of link.berry
 
 
 
